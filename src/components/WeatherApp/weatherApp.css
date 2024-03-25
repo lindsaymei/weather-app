@@ -1,0 +1,33 @@
+        /* almost all of these are temp styles to make sure componets are working*/
+
+.cityBar{
+    border-radius: 2rem;
+}
+.cityBar input{
+    border-radius: 2rem;
+    background: #ffffff;
+box-shadow:  20px 20px 60px #d9d9d9,
+             -20px -20px 60px #ffffff;
+    
+   max-width: 30vw;
+   width: calc(150px + 20vw);
+    
+}
+.cityBar{
+    float:right;
+    flex-direction: row;
+}
+.searchIcon img{
+    width: 5vw;
+    height: auto;
+    object-fit: contain;
+}
+.currWeather{
+    font-size: larger;
+    background-color: gray;
+    width: 19vw;
+    height:  100vh;
+    margin: auto;
+    float:left;
+    padding: 1%;
+}
