@@ -1,7 +1,11 @@
         /* almost all of these are temp styles to make sure componets are working*/
 
-.cityBar{
+.searchBar{
     border-radius: 2rem;
+    float:right; 
+    white-space: nowrap;
+    max-width: 30vw;
+    flex-direction: row;
 }
 .cityBar input{
     border-radius: 2rem;
@@ -12,6 +16,17 @@ box-shadow:  20px 20px 60px #d9d9d9,
    max-width: 30vw;
    width: calc(150px + 20vw);
     
+}
+.todayIcon{
+    max-width: 15vw;
+    height: auto;
+}
+.searchBar ul{
+    max-height:30vh;
+    height: auto;
+    overflow-y: scroll;
+    font-size: medium;
+    max-width: 20vw;
 }
 .cityBar{
     float:right;
