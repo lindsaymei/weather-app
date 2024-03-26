@@ -13,14 +13,14 @@ function App() {
 
 useEffect(() => {
   if (!locationSet) {
-    console.log("location is undefined");
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        var lat =position.coords.latitude.toFixed(3); 
-        var long = position.coords.longitude.toFixed(3);
-        console.log("coords:" +lat, long)
-
-        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${open_api_key}`)
+        var lat =position.coords.latitude.toFixed(4); 
+        var long = position.coords.longitude.toFixed(4);
+        
+        fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?aggregateHours=24&contentType=json&unitGroup=us&locationMode=single&key=A44A6BCTP8LE8ARZZSSZDFE5L&locations=${lat},${long}`,{
+          method: 'GET',
+        })
           .then((res) => res.json())
           .then((response) => {
             setData(response);
@@ -31,21 +31,26 @@ useEffect(() => {
     }
   }
 }, [locationSet]);
+//TODO: edit statements to be responsive
+
   return (
     
     <div>
        
-            <SearchRes/>
-            {data ? (
-              <Weather weatherData={data}/>
-
-          ):null}
+            <SearchRes />
             
+            {data && <Weather weatherData={data} />}
+
+          
             
 
     </div>
     
   );
-}
+  }
+
+
+ 
+
 
 export default App;
