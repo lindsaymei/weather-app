@@ -27,14 +27,20 @@ function App() {
             const cityName = response1[0].name;
             const countryName = response1[0].country;
             setLocation(cityName);
-  
-            const res2 = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?aggregateHours=24&contentType=json&unitGroup=us&locationMode=single&key=A44A6BCTP8LE8ARZZSSZDFE5L&locations=${cityName}%2CUS`);
+           
+            const res2 = await fetch(` https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName},${countryName}?key=A44A6BCTP8LE8ARZZSSZDFE5L`);
             const response2 = await res2.json();
   
             console.log(response2);
             setData(response2);
             setLocationSet(true);
           });
+        } else{
+          const res2 = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?aggregateHours=24&contentType=json&unitGroup=us&locationMode=single&key=A44A6BCTP8LE8ARZZSSZDFE5L&locations=London%2CUK`);
+          const response2 = await res2.json();
+         
+          setData(response2);
+          setLocationSet(true);
         }
       }
     };

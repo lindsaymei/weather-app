@@ -1,5 +1,11 @@
         /* almost all of these are temp styles to make sure componets are working*/
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
 
+
+body{
+    background: url('../assets/skybg.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
 .searchBar{
     border-radius: 2rem;
     float:right; 
@@ -39,12 +45,23 @@ box-shadow:  20px 20px 60px #d9d9d9,
 }
 .currWeather{
     font-size: larger;
-    background-color: gray;
+    font-family: "Oxygen", sans-serif;
+
+/* From https://css.glass */
+    background: rgba(255, 255, 255, 0.33);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(13.3px);
+    -webkit-backdrop-filter: blur(13.3px);
+    border: 1px solid rgba(255, 255, 255, 0.39);
     width: 19vw;
     height:  100vh;
     margin: auto;
     float:left;
     padding: 1%;
+}
+.conds{
+    margin: auto;
+    text-align: center;
 }
 .mobile{
     .currWeather{
@@ -56,4 +73,35 @@ box-shadow:  20px 20px 60px #d9d9d9,
         float:none !important;
     }
 }
+.hourly{
+    list-style: none;
+    max-height: 10vh;
+    /* overflow-x:scroll;  */
+    flex-direction: row;
+    display: inline !important;
+    margin: auto;
+    img{
+        width: 99%;
+    }
+    li{
+        display: inline !important;
+        float:right; 
+        width: auto;
+        max-width: 6vw;
+        height: auto;
+        padding: .5%;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.33);
+        margin-right: 1vw;
+        border-radius: .5rem;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(11.6px);
+        -webkit-backdrop-filter: blur(11.6px);
+        border: 1px solid rgba(255, 255, 255, 0.82)
+
+    
+    }
+
+}
+
     
