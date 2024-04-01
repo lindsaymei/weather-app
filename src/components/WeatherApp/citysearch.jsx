@@ -1,55 +1,77 @@
 import React, { useState } from 'react';
-import './weatherApp.css';
+import Autosuggest from 'react-autosuggest';
+import './weatherApp.css'; // Import the CSS file
+
 import temp_search_icon from "../assets/search_red.jpg";
 
-const SearchRes = () => {
+const SearchRes = ({ onLocationSelect }) => {
     const open_api_key = "927ff31c800fbd111a2e2e414aa55341";
-    const [location, setLocation] = useState("");
-    const [cities, setCities] = useState([]);
+    const [query, setQuery] = useState("");
+    const [suggestions, setSuggestions] = useState([]);
 
-    const url = `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=${open_api_key}`;
+    const onSuggestionsFetchRequested = async ({ value }) => {
+        await fetchSuggestions(value);
+    };
 
-    const searchLocation = (event) => {
-        if (event.key === "Enter") {
-            fetch(url)
-                .then((res) => res.json())
-                .then((response) => {
-                    setCities(response);
-                    console.log(response);
-                });
+    const onSuggestionsClearRequested = () => {
+        setSuggestions([]);
+    };
+
+    const fetchSuggestions = async (value) => {
+        const url = `http://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=5&appid=${open_api_key}`;
+        try {
+            const response = await fetch(url);
+            if (response.ok) {
+                const data = await response.json();
+                const cities = data.map(city => ({
+                    name: city.name,
+                    state: city.state,
+                    country: city.country
+                }));
+                setSuggestions(cities);
+            }
+        } catch (error) {
+            console.error('Error fetching suggestions:', error);
         }
-    }
+    };
 
-    const possCities = cities.map((city, index) => (
-        <div key={index}>
-            <li key={index} className='searchResult'>
-                <h1>{city.name}</h1>
-                <p>{city.state}</p>
-                <p>{city.country}</p>
-            </li>
+    const getSuggestionValue = (suggestion) => suggestion.name;
+
+    const renderSuggestion = (suggestion) => (
+        <div>
+            <h1>{suggestion.name}</h1>
+            <p>{suggestion.state}</p>
+            <p>{suggestion.country}</p>
         </div>
-    ));
+    );
+
+    const inputProps = {
+        placeholder: 'Search for a location...',
+        value: query,
+        onChange: (event, { newValue }) => setQuery(newValue)
+    };
+
+    const onSuggestionSelected = (event, { suggestion }) => {
+        // Pass the selected location to the parent component
+        onLocationSelect(suggestion);
+    };
 
     return (
-        <div>
-            <div className='searchBar col'>
-                <input type="text" className='cityInput' placeholder='search'
-                    value={location}
-                    onChange={(event) => setLocation(event.target.value)}
-                    onKeyDown={searchLocation}
-                />
-                <ul>
-                {possCities}
-
-                </ul>
-                <div className='searchIcon'>
+        <div className="autosuggest-container"> {/* Updated class name */}
+            <Autosuggest
+                suggestions={suggestions}
+                onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+                onSuggestionsClearRequested={onSuggestionsClearRequested}
+                getSuggestionValue={getSuggestionValue}
+                renderSuggestion={renderSuggestion}
+                inputProps={inputProps}
+                onSuggestionSelected={onSuggestionSelected}
+            />
+            <div className='searchIcon'>
                 <img src={temp_search_icon} alt='search icon'></img>
             </div>
-            </div>
-            
-            
         </div>
-    )
-}
+    );
+};
 
 export default SearchRes;
