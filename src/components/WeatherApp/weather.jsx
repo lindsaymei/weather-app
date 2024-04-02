@@ -25,7 +25,7 @@ function Weather({ weatherData, units }) {
     const next6Hours = [];
     let currentHour = today.getHours() + 1;
 
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 8; i++) {
         const forecastedHour = (currentHour + i) % 24;
         next6Hours.unshift(weatherData.days[0].hours[forecastedHour]); // Unshift to add at the beginning
     }

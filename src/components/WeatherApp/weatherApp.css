@@ -79,50 +79,55 @@ body{
     backdrop-filter: blur(8.9px);
     -webkit-backdrop-filter: blur(8.9px);
 }
+
 .hourly{
-    flex-direction: row;
+    float:left;
     list-style: none;
     /* overflow-x:scroll;  */
     flex-direction: row;
-    display: inline !important;
     margin: auto;
+    
     position: absolute;
     /* padding-top: 50px; */
-    padding:1.5%;
-    min-height: 12vh; height: auto;
-    max-height: 20vh;
-
+    padding:1%;
+    min-height: 15vh; height: auto;
+    max-height: 16vh;
     border-radius: .5rem;
-    
-    min-width: 40vw;
-    width: fit-content;
+    white-space: nowrap;
+    min-width: 60vw;
+    width: auto;
     max-width: 90vw;
-    right: calc(19vw + 5px);
-
+    
+    z-index: 99;
+    text-align: center;
     li{
         position: relative;
-        display: inline !important;
-        float:left; 
+        display: inline-block !important;
+        min-width: 5vw;
         width: auto;
         max-width: 100px;
         height: auto;
+        min-height: 10vh;
         padding: .05%;
         text-align: center;
         /* background: rgba(255, 255, 255, 0.33); */
-      
-       
 
     
     }
 
 }
 .hourly img{
-    width: 85%;
-    height: auto;
+    width:auto;
+    height: calc(40px + 5vh);
+    margin: auto;
+    padding: none;
 }
 .hourly h3{
     opacity: 80%;
-    margin-top: -1%;
+    margin-top: 0px;
+}
+.hourly p{
+    margin-top: 0px;
 }
 .hourly-container {
     display: flex;
@@ -131,17 +136,23 @@ body{
     width: 100%; /* Ensure the container spans the full width */
 }
 .hourPeak {
+    float: right;
+    text-align: center;
     font-size: medium !important;
+    margin-right: 3% ;
    /* Increase the padding */
     /* border-radius: 0.5rem; */
     /* background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     font-size: larger;  */
+    
+    margin-top: 0px;
     align-items: center; /* Center the items vertically */
    h3,p{
     
-    font-size: medium;
+        font-size: medium;
+        max-height: 1vh;
    }
 
 
@@ -195,12 +206,17 @@ body{
     max-width: 80vw;
     margin:auto;
     position: absolute;
-
+    text-align: center;
     min-height: 70vh;
     max-height: 90vh;
     height: fit-content;
-    top: 10%;
-    left:22%;
+    top: 5%;
+    left:25%;
+}
+.forecast{
+    
+    max-height: 80vh;
+    
 }
 
 /* next few days */
@@ -208,12 +224,12 @@ body{
     position: relative;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 60px; 
     justify-content: center;
     align-items: center;
     margin: auto;
-    margin-top: 15%;
-    padding: 1rem;
+    margin-top: 20%;
+    width: 100%;
     max-height: 80vh;
     
 
@@ -221,25 +237,32 @@ body{
 }
 /* START on updating css to match figma - I will come back to this by the end of the day*/
 .day-forecast {
-    padding: 1rem;
     border-radius: 0.5rem;
+    padding:1% 5%;
     /* background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     text-align: center;
     font-size: large;
-    width: 20vw;
-    max-height: 25vh;
+    width: calc(15vw + 30px);
+    height: 30vh;
+    
+    margin:auto;
 }
 
 .day-forecast img {
-    width: 60%;
+    object-fit: contain;
+    width: 65%;
     height: auto;
+    max-height: 22vh;
+    margin-top: -2px;
 }
 
 .day-forecast h3 {
-    margin-bottom: 10px;
+    position: relative;
+    text-align: left;
+    margin-top: 0px;
 }
 
 .day-forecast p {
-    margin-top: 10px;
+    margin-top: 0px;
 }
