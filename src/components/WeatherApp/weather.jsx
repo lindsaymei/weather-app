@@ -37,13 +37,13 @@ function Weather({ weatherData, units }) {
                     <h1>{today.toLocaleDateString('en-US', { weekday: 'long' })}</h1>
                     <h2>{today.toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit' })}</h2>
                     {FindIcon(weatherData.days[0].icon)}
-                    <div className='conds'>
-                        <h2>{weatherData.resolvedAddress.split(',')[0] + weatherData.resolvedAddress.split(',')[1]}</h2>
-                        <p>{convertTemp(weatherData.currentConditions.temp)}{units === 'imperial' ? '°F' : '°C'}</p>
-                        <p className='maxmin'>{convertTemp(weatherData.days[0].tempmax)}/{convertTemp(weatherData.days[0].tempmin)}{units === 'imperial' ? '°F' : '°C'}</p>
-                        <p className='feelsLike'>Feels like {convertTemp(weatherData.days[0].feelslike)}{units === 'imperial' ? '°F' : '°C'}</p>
-                        <p>{weatherData.days[0].description}</p>
-                    </div>
+                      <div className='conds'>
+                          <h2>{weatherData.resolvedAddress.split(',')[0] + weatherData.resolvedAddress.split(',')[1]}</h2>
+                          <p>{convertTemp(weatherData.currentConditions.temp)}{units === 'imperial' ? '°F' : '°C'}</p>
+                          <p className='maxmin'>{convertTemp(weatherData.days[0].tempmax)}/{convertTemp(weatherData.days[0].tempmin)}{units === 'imperial' ? '°F' : '°C'}</p>
+                          <p className='feelsLike'>Feels like {convertTemp(weatherData.days[0].feelslike)}{units === 'imperial' ? '°F' : '°C'}</p>
+                          <p>{weatherData.days[0].description}</p>
+                      </div>
                 </div>
                 
                 <div className = 'forecastCont'>

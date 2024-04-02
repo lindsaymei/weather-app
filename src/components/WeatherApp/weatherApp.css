@@ -6,40 +6,453 @@ body{
     background: url('../assets/skybg.jpg') no-repeat center center fixed;
     background-size: cover;
 }
+@media only screen and (min-width: 600px) {
+    .hourly, .day-forecast{
+        background: rgba(255, 255, 255, 0.5);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(8.9px);
+        -webkit-backdrop-filter: blur(8.9px);
+    }
+    
+    .searchBar{
+        border-radius: 2rem;
+        float:right; 
+        white-space: nowrap;
+        max-width: 30vw;
+        flex-direction: row;
+    }
+    .cityBar input {
+        border-radius: 2rem;
+        max-width: 30vw;
+        width: calc(200px + 20vw); 
+        height: 3rem; 
+    }
+    .todayIcon{
+        max-width: 15vw;
+        height: auto;
+    }
+    .searchBar ul{
+        max-height:30vh;
+        max-width: 20vw;
+    }
+
+    .searchIcon img{
+        width: 5vw;
+        height: auto;
+        object-fit: contain;
+    }
+    .currWeather{
+        font-size: larger;
+        position: fixed;
+        top: 0;
+    /* From https://css.glass */
+        width: 19vw;
+        height:  100vh;
+        margin: auto;
+        float:left;
+        padding: 1%;
+    }
+    .conds{
+        margin: auto;
+        text-align: center;
+    }
+    
+    .hourly{
+        
+        padding:1%;
+        min-height: 15vh; height: auto;
+        max-height: 16vh;
+        border-radius: .5rem;
+        white-space: nowrap;
+        min-width: 60vw;
+        width: auto;
+        max-width: 90vw;
+        
+        li{
+            min-width: 5vw;
+            width: auto;
+            max-width: 100px;
+            height: auto;
+            min-height: 10vh;
+            padding: .05%;
+            
+            /* background: rgba(255, 255, 255, 0.33); */
+    
+        
+        }
+    
+    }
+    .hourly img{
+        width:auto;
+        height: calc(40px + 5vh);
+        margin: auto;
+        padding: none;
+    }
+    .hourly h3{
+        opacity: 80%;
+        margin-top: 0px;
+    }
+    .hourly p{
+        margin-top: 0px;
+    }
+    .hourPeak {
+
+        margin-right: 3% ;
+       /* Increase the padding */
+        /* border-radius: 0.5rem; */
+        /* background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        font-size: larger;  */
+        
+        margin-top: 0px;
+        align-items: center; /* Center the items vertically */
+       h3,p{
+        
+            font-size: medium;
+            max-height: 1vh;
+       }
+    
+    
+    }
+    
+        
+    /*
+        search bar
+    */
+    
+    
+    .autosuggest-container {
+        top: 20px; /* Adjust top position as needed */
+        right: 20px; /* Adjust right position as needed */
+    }
+    .searchIcon {
+        margin-left: 10px;
+    }
+    
+    .autosuggest-container .react-autosuggest__suggestions-container {
+        position: absolute;
+        top: calc(100% + 5px);
+        right: 0;
+        width: 400px; /* Adjust width as needed */
+        
+    }
+    
+    .autosuggest-container .react-autosuggest__suggestions-list {
+        max-height: 300px; /* Adjust max height as needed */
+        
+    }
+    
+    .autosuggest-container .react-autosuggest__suggestion {
+        padding: 10px;
+        
+    }
+    
+ 
+    .forecastCont{
+        max-width: 80vw;
+       
+        min-height: 70vh;
+        max-height: 90vh;
+        height: fit-content;
+        top: 5%;
+        left:25%;
+    }
+    .forecast{
+        
+        max-height: 80vh;
+        
+    }
+    
+    /* next few days */
+    .day-forecast-container {
+        position:fixed;
+        top: 20vh;
+        width: 100%;
+        max-height: 80vh;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 60px; 
+    
+    
+    }
+    .day-forecast {
+        padding:1% 5%;
+        /* background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+       
+        width: calc(15vw + 30px);
+        height: 32vh;
+        
+        margin:auto;
+    }
+    
+    .day-forecast img {
+        width: 65%;
+        height: auto;
+        max-height: 22vh;
+        margin-top: -2px;
+    }
+    
+    .day-forecast h3 {
+        margin-top: 0px;
+    }
+    
+    .day-forecast p {
+        margin-top: 0px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .hourly,.day-forecast-container{
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    -webkit-backdrop-filter: blur(10.3px);
+    backdrop-filter: blur(10.3px);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    }
+    .searchBar{
+        border-radius: 2rem;
+        float:right; 
+        white-space: nowrap;
+        max-width: 30vw;
+        flex-direction: row;
+    }
+    .cityBar input {
+        border-radius: 2rem;
+        max-width: 30vw;
+        width: calc(200px + 20vw); 
+        height: 3rem; 
+    }
+    .todayIcon{
+        max-width: 15vw;
+        height: auto;
+    }
+    .searchBar ul{
+        max-height:30vh;
+        max-width: 20vw;
+    }
+
+    .searchIcon img{
+        width: 5vw;
+        height: auto;
+        object-fit: contain;
+    }
+    .currWeather{
+        flex-direction: row;
+        font-size: small !important;
+        position: fixed;
+        margin-top: 5vh !important;
+        width: 90vw;
+        height:  20vh;
+        margin: auto;
+        padding: 5%;
+        border-radius: 1rem;
+        left:2.5vw;
+        right:2.5vw;
+        h1,h2{
+            margin-top: 1vh !important;
+        }
+        
+     
+    }
+    .currWeather .todayIcon{
+        min-width: 22vw;
+        max-width: 23vw;
+        height: auto;
+        margin: auto;
+        padding:1%;
+        margin-top: -5vw !important;
+    }
+
+    .conds{
+        position: fixed;
+        flex-direction: column;
+        margin: auto;
+        text-align: center;
+        font-size: small ;
+        top: 1vh !important;
+        left:40vw;
+        text-align: left !important;
+    }
+  
+    .hourly{
+        position: absolute;
+        top:22vh; /* height of currWeather + 2vh */
+        padding:1%;
+        min-height: 5vh; 
+        height: auto;
+        max-height: 12vh;
+        border-radius: .5rem;
+        min-width: 80vw;
+        width: auto;
+        max-width: 90vw;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        li{
+
+            min-width: 12vw;
+            width: auto;
+            max-width: 12.5vw;
+            height: auto;
+            min-height: 10vh;
+            padding: .05%;
+            
+            /* background: rgba(255, 255, 255, 0.33); */
+    
+        
+        }
+    
+    }
+    .hourly img{
+        width:auto;
+        height: 8vh;
+        margin: auto;
+        padding: none;
+        object-fit: contain;
+    }
+    .hourly h3{
+        opacity: 80%;
+        margin-top: 0px;
+    }
+    .hourly p{
+        margin-top: 0px;
+    }
+    .hourPeak {
+
+        margin-right: 3% ;
+       /* Increase the padding */
+        /* border-radius: 0.5rem; */
+        /* background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        font-size: larger;  */
+        
+        margin-top: 0px;
+        align-items: center; /* Center the items vertically */
+       h3,p{
+        
+            font-size: medium;
+            max-height: 1vh;
+       }
+    
+    
+    }
+    
+        
+    /*
+        search bar
+    */
+    
+    
+    .autosuggest-container {
+        top: 20px; /* Adjust top position as needed */
+        right: 20px; /* Adjust right position as needed */
+    }
+    .searchIcon {
+        margin-left: 10px;
+    }
+    
+    .autosuggest-container .react-autosuggest__suggestions-container {
+        position: absolute;
+        top: calc(100% + 5px);
+        right: 0;
+        width: 400px; /* Adjust width as needed */
+        
+    }
+    
+    .autosuggest-container .react-autosuggest__suggestions-list {
+        max-height: 300px; /* Adjust max height as needed */
+        
+    }
+    
+    .autosuggest-container .react-autosuggest__suggestion {
+        padding: 10px;
+        
+    }
+    
+ 
+    .forecastCont{
+        max-width: 90vw;
+        min-height: 80vh;
+        max-height: 95vh;
+        height: auto;
+        top: 5%;
+        left:5vw !important;
+       
+    }
+  
+    
+    /* next few days */
+    .day-forecast-container {
+        position: relative;
+        z-index: -1;
+        top: 38vh;
+        width: 90vw;
+        height: 55vh;
+        overflow-y: scroll;
+        bottom: -1px;
+    
+    }
+    .day-forecast {
+        flex-direction: row;
+        float: left;
+        padding:1% 5%;
+        /* background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+        width: 70vw;
+        white-space: nowrap !important; 
+        height: 10vh;
+        object-fit: contain;
+        margin:auto;
+    }
+    
+    .day-forecast img {
+        width: 35%;
+        height: auto;
+        max-height: 12vh;
+        margin-top: -10px !important;
+    
+        float:left; 
+    }
+    
+    .day-forecast h3 {
+        margin-top: 0px;
+        font-size: medium;
+    }
+    
+    .day-forecast p {
+        margin-top: 0px;
+    }
+}
 .searchBar{
     border-radius: 2rem;
     float:right; 
     white-space: nowrap;
-    max-width: 30vw;
     flex-direction: row;
 }
 .cityBar input {
     border-radius: 2rem;
     background: #ffffff;
     box-shadow:  20px 20px 60px #d9d9d9,
-                 -20px -20px 60px #ffffff;
-    max-width: 30vw;
-    width: calc(200px + 20vw); 
-    height: 3rem; 
+
 }
 .todayIcon{
     max-width: 15vw;
     height: auto;
 }
 .searchBar ul{
-    max-height:30vh;
     height: auto;
     overflow-y: scroll;
     font-size: medium;
-    max-width: 20vw;
 }
 .cityBar{
     float:right;
     flex-direction: row;
 }
 .searchIcon img{
-    width: 5vw;
-    height: auto;
     object-fit: contain;
 }
 .currWeather{
@@ -53,32 +466,16 @@ body{
     backdrop-filter: blur(13.3px);
     -webkit-backdrop-filter: blur(13.3px);
     border: 1px solid rgba(255, 255, 255, 0.39);
-    width: 19vw;
-    height:  100vh;
     margin: auto;
-    float:left;
+    
     padding: 1%;
 }
+
 .conds{
     margin: auto;
     text-align: center;
 }
-.mobile{
-    .currWeather{
-        width: 80vw;
-        border:5px solid red; 
-        height: 10vh;
-        flex-direction: row;
-        margin: auto;
-        float:none !important;
-    }
-}
-.hourly, .day-forecast{
-    background: rgba(255, 255, 255, 0.26);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8.9px);
-    -webkit-backdrop-filter: blur(8.9px);
-}
+
 
 .hourly{
     float:left;
@@ -90,24 +487,17 @@ body{
     position: absolute;
     /* padding-top: 50px; */
     padding:1%;
-    min-height: 15vh; height: auto;
-    max-height: 16vh;
+    
     border-radius: .5rem;
     white-space: nowrap;
-    min-width: 60vw;
-    width: auto;
-    max-width: 90vw;
+    
     
     z-index: 99;
     text-align: center;
     li{
         position: relative;
         display: inline-block !important;
-        min-width: 5vw;
-        width: auto;
-        max-width: 100px;
-        height: auto;
-        min-height: 10vh;
+
         padding: .05%;
         text-align: center;
         /* background: rgba(255, 255, 255, 0.33); */
@@ -117,8 +507,6 @@ body{
 
 }
 .hourly img{
-    width:auto;
-    height: calc(40px + 5vh);
     margin: auto;
     padding: none;
 }
@@ -222,16 +610,13 @@ body{
 /* next few days */
 .day-forecast-container {
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 60px; 
+   
     justify-content: center;
     align-items: center;
     margin: auto;
-    margin-top: 20%;
-    width: 100%;
-    max-height: 80vh;
     
+    width: 100%;
+  
 
 
 }
@@ -243,18 +628,14 @@ body{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     text-align: center;
     font-size: large;
-    width: calc(15vw + 30px);
-    height: 30vh;
+   
     
     margin:auto;
 }
 
 .day-forecast img {
     object-fit: contain;
-    width: 65%;
-    height: auto;
-    max-height: 22vh;
-    margin-top: -2px;
+   
 }
 
 .day-forecast h3 {
