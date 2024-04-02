@@ -23,15 +23,17 @@ function App() {
                         // Fetch city name using reverse geocoding
                         const geoResponse = await fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${open_api_key}`);
                         const geoData = await geoResponse.json();
+                        
                         const cityName = geoData[0].name;
                         const countryName = geoData[0].country;
                         
                         // Fetch weather data based on city name
                         const weatherResponse = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName},${countryName}?key=A44A6BCTP8LE8ARZZSSZDFE5L`);
                         const weatherData = await weatherResponse.json();
-                        
+                        console.log(weatherData);
                         setData(weatherData);
                         setLocationSet(true);
+                      
                     });
                 } else {
                   //ELSE fetch the weather data for a default location

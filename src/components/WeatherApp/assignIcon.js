@@ -8,22 +8,29 @@ import storm from '../assets/sun_storm.png';
 import wind from '../assets/sun_wind.png';
 
 export function FindIcon(weatherMain) {
+    //assumes the weatherMain arg is the icon name for simplicity
+   
   if(weatherMain !== undefined){
    switch(weatherMain){
-    case weatherMain === "clear-day" || weatherMain === "clear-night":
+    case  "clear-day":
+    case "clear-night":
         return <img className='todayIcon' src={sun} alt='weather icon'></img>;
-    case weatherMain === "rain":
+    case "rain":
         return <img className='todayIcon' src={rain} alt='weather icon'></img>; 
-    case weatherMain === "snow":
+    case "snow":
         return <img className='todayIcon' src={snow} alt='weather icon'></img>;
-    case weatherMain === "thunder-showers-day" || weatherMain === "thunder-rain":
+    case "thunder-showers-day":
+    case"thunder-rain":
         return <img className='todayIcon' src={storm} alt='weather icon'></img>;
-    case weatherMain === "fog" || weatherMain ==="cloudy" || weatherMain ==="partly-cloudy-day" || weatherMain ==="partly-cloudy-night":
+    case "fog":
+    case "cloudy":
+    case"partly-cloudy-day":
+    case "partly-cloudy-night":
         return <img className='todayIcon' src={clouds} alt='weather icon'></img>;
-    case weatherMain === "wind":
+    case "wind":
         return <img className='todayIcon' src={wind} alt='weather icon'></img>; //TODO: find a better icon maybe?
     default:
-        return <img className='todayIcon' src={sun} alt='weather icon'></img>;
+        return <img className='todayIcon' src={snow} alt='weather icon'></img>;
         
     }
     
