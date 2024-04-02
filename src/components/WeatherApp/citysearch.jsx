@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Autosuggest from 'react-autosuggest';
 import './weatherApp.css'; // Import the CSS file
-
+import { Input } from '@mui/base/Input';
 import temp_search_icon from "../assets/search_red.jpg";
 
 const SearchRes = ({ onLocationSelect }) => {
@@ -57,6 +57,7 @@ const SearchRes = ({ onLocationSelect }) => {
     };
 
     return (
+
         <div className="autosuggest-container"> {/* Updated class name */}
             <Autosuggest
                 suggestions={suggestions}
@@ -68,6 +69,8 @@ const SearchRes = ({ onLocationSelect }) => {
                 onSuggestionSelected={onSuggestionSelected}
             />
             <div className='searchIcon'>
+
+
                 <img src={temp_search_icon} alt='search icon'></img>
             </div>
         </div>

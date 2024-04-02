@@ -45,12 +45,15 @@ function Weather({ weatherData, units }) {
                         <p>{weatherData.days[0].description}</p>
                     </div>
                 </div>
+                
+                <div className = 'forecastCont'>
                 <ul className='hourly'>
                     {next6Hours.map((hour, index) => (
                         <div key={index}>
                             <li key={index} className='hourPeak'>
-                                {FindIcon(hour.icon)}
                                 <h3>{((currentHour + 5 - index) % 12 || 12) + (currentHour + 5 - index < 12 ? ' AM' : ' PM')}</h3>
+
+                                {FindIcon(hour.icon)}
                                 <p>{convertTemp(hour.temp)}{units === 'imperial' ? '°F' : '°C'}</p>
                             </li>
                         </div>
@@ -61,12 +64,14 @@ function Weather({ weatherData, units }) {
                         {nextDaysData.map((day, index) => (
                             <div key={index} className="day-forecast">
                                 <h3>{days[(today.getDay() + index + 1) % 7]}</h3>
-                                <img src={`../components/assets/${getWeatherIcon(day.icon, today.getHours())}`} alt={day.description} />
+                                {FindIcon(day.icon)}
                                 <p>{convertTemp(day.tempmax)}/{convertTemp(day.tempmin)}{units === 'imperial' ? '°F' : '°C'}</p>
                             </div>
                         ))}
                     </div>
                 </div>
+                </div>
+                
             </div>
         </div>
     );
@@ -75,6 +80,7 @@ function Weather({ weatherData, units }) {
 export default Weather;
 
 // Helper function to get weather icon based on day or night
+//use FindIcon(x.icon)}
 function getWeatherIcon(icon, currentHour) {
     const isDay = currentHour >= 6 && currentHour < 18; // Assuming day time between 6 AM and 6 PM
     return isDay ? `sun_${icon}.png` : `moon_${icon}.png`;

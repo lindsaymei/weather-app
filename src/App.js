@@ -15,6 +15,7 @@ function App() {
     useEffect(() => {
         const fetchData = async () => {
             if (!locationSet) {
+              //if location is enabled, use geolocation to get the user's location
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(async (position) => {
                         const { latitude, longitude } = position.coords;
@@ -33,7 +34,17 @@ function App() {
                         setLocationSet(true);
                     });
                 } else {
-                    console.log("Geolocation is not supported by this browser.");
+                  //ELSE fetch the weather data for a default location
+                //note: there will be an error if there is no default location
+                  console.log("Geolocation is not supported by this browser.");
+
+                  // using a non-charlotte location for testing reasons
+                  const weatherResponse = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Raleigh,US?key=A44A6BCTP8LE8ARZZSSZDFE5L`);
+                  const weatherData = await weatherResponse.json();
+                    
+                  setData(weatherData);
+                  setLocationSet(true);
+                    
                 }
             }
         };
