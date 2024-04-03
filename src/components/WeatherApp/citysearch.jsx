@@ -39,7 +39,7 @@ const SearchRes = ({ onLocationSelect }) => {
 
     const renderSuggestion = (suggestion) => (
         <div>
-            <h1>{suggestion.name}</h1>
+            <h3>{suggestion.name}</h3>
             <p>{suggestion.state}</p>
             <p>{suggestion.country}</p>
         </div>

@@ -6,6 +6,7 @@ body{
     background: url('../assets/skybg.jpg') no-repeat center center fixed;
     background-size: cover;
 }
+/* tablet/ web sizing*/
 @media only screen and (min-width: 600px) {
     .hourly, .day-forecast{
         background: rgba(255, 255, 255, 0.5);
@@ -52,7 +53,6 @@ body{
         font-size: larger;
         position: fixed;
         top: 0;
-    /* From https://css.glass */
         width: 19vw;
         height:  100vh;
         margin: auto;
@@ -175,7 +175,8 @@ body{
         min-height: 70vh;
         max-height: 90vh;
         height: fit-content;
-        top: 5%;
+        position: absolute;
+        top:1vh;
         left:25%;
     }
     .forecast{
@@ -189,7 +190,7 @@ body{
         position:fixed;
         top: 20vh;
         width: 100%;
-        max-height: 80vh;
+        max-height: 60vh;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 60px; 
@@ -197,12 +198,12 @@ body{
     
     }
     .day-forecast {
-        padding:1% 5%;
+        padding:3% 5%;
         /* background-color: rgba(255, 255, 255, 0.8);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
        
         width: calc(15vw + 30px);
-        height: 32vh;
+        height: 30vh;
         
         margin:auto;
     }
@@ -211,17 +212,19 @@ body{
         width: 65%;
         height: auto;
         max-height: 22vh;
-        margin-top: -2px;
+        margin-top: -5px;
     }
     
     .day-forecast h3 {
-        margin-top: 0px;
+        margin-top: -1px;
+        margin-bottom: 1px !important;
     }
     
     .day-forecast p {
         margin-top: 0px;
     }
 }
+/* mobile sizing*/
 @media only screen and (max-width: 600px) {
     .hourly,.day-forecast-container{
     background: rgba(255, 255, 255, 0.22);
@@ -457,6 +460,15 @@ body{
         margin-top: 0px;
     }
 }
+/* global styling */
+::-webkit-scrollbar-thumb{
+    border-radius: .5rem;
+    background-color: black !important;
+}
+::-webkit-scrollbar {
+    max-width: 3vw;
+    max-height: 6vh;
+  }
 .searchBar{
     border-radius: 2rem;
     float:right; 
@@ -590,14 +602,23 @@ body{
 
 
 .autosuggest-container {
-    top: 30px; /* Adjust top position as needed */
+    top: 2vh; /* Adjust top position as needed */
     right: 100px; /* Adjust right position as needed */
     display: flex;
     height: 3vh;
     position: absolute;
     
+    
 }
-
+.autosuggest-container input{
+    background: rgba(255, 255, 255, 0.57);
+    border-radius: .5em;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10.5px);
+    -webkit-backdrop-filter: blur(10.5px);
+    border: 1px solid rgba(255, 255, 255, 1);
+    padding:1%;
+}
 .searchIcon {
     margin-left: 10px;
 }
@@ -609,6 +630,7 @@ body{
     width: 400px; /* Adjust width as needed */
     background-color: #fff;
     z-index: 999;
+    border-radius: .5rem;
 
 }
 
@@ -616,9 +638,27 @@ body{
     list-style: none;
     padding: 0;
     margin: 0;
-    max-height: 300px; /* Adjust max height as needed */
-    overflow-y: auto;
+    max-height: calc(100px + 10vh); /* Adjust max height as needed */
+    overflow-y: scroll !important;
+    li > div{
+        white-space: nowrap;
+        max-height: 5vh;
+        height: auto;
+        display: inline-flex;
+    }
 }
+.react-autosuggest__suggestions-list p,.react-autosuggest__suggestions-list h3{
+    padding: 1%;
+    margin: auto; 
+} 
+.react-autosuggest__suggestions-list::-webkit-scrollbar-thumb{
+    border-radius: .5rem;
+    /* background-color: black !important; */
+}
+.react-autosuggest__suggestions-list::-webkit-scrollbar {
+    max-width: 3vw;
+    max-height: 4vh;
+  }
 
 .autosuggest-container .react-autosuggest__suggestion {
     padding: 10px;
@@ -627,6 +667,7 @@ body{
 
 .autosuggest-container .react-autosuggest__suggestion:hover {
     background-color: #f0f0f0;
+    
 }
 
 .forecastCont{
@@ -637,7 +678,7 @@ body{
     min-height: 70vh;
     max-height: 90vh;
     height: fit-content;
-    top: 5%;
+    top: 1.5%;
     left:25%;
 }
 .forecast{
