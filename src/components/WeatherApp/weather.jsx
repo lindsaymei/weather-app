@@ -69,24 +69,19 @@ function Weather({ weatherData, units }) {
                                 </li>
                             </div>
                         ))}
-    </ul>
-    <div className="forecast">
-        <div className="day-forecast-container">
-            {nextDaysData.map((day, index) => (
-                <div key={index} className="day-forecast">
-                    <h3>{days[(today.getDay() + index + 1) % 7]}</h3>
-                    {FindIcon(day.icon)} {/* Always pass sun icon for the next few days */}
-                    <p>{convertTemp(day.tempmax)}/{convertTemp(day.tempmin)}{units === 'imperial' ? '°F' : '°C'}</p>
+                    </ul>
+                <div className="forecast">
+                    <div className="day-forecast-container">
+                        {nextDaysData.map((day, index) => (
+                        <div key={index} className="day-forecast">
+                            <h3>{days[(today.getDay() + index + 1) % 7]}</h3>
+                            {FindIcon(day.icon)} {/* Always pass sun icon for the next few days */}
+                            <p>{convertTemp(day.tempmax)}/{convertTemp(day.tempmin)}{units === 'imperial' ? '°F' : '°C'}</p>
+                        </div>
+                    ))}
+                    </div>
+                    </div>
                 </div>
-            ))}
-        </div>
-    </div>
-</div>
-
-
-
-
-                
             </div>
         </div>
     );

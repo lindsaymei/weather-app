@@ -224,6 +224,7 @@ body{
         margin-top: 0px;
     }
 }
+
 /* mobile sizing*/
 @media only screen and (max-width: 600px) {
     .hourly,.day-forecast-container{
@@ -271,14 +272,14 @@ body{
     .currWeather{
         flex-direction: row;
         font-size: small !important;
-        position: fixed;
-        margin-top: 5vh !important;
-        width: 90vw;
-        height:  20vh;
+        position: relative !important;
+        top: -55px !important;
+        margin-top: 3vh !important;
+        width: 85vw;
+        height:  30vh;
         margin: auto;
         padding: 5%;
         border-radius: 1rem;
-        left:2.5vw;
         right:2.5vw;
         h1,h2{
             margin-top: 1vh !important;
@@ -287,7 +288,7 @@ body{
      
     }
     .currWeather .todayIcon{
-        min-width: 22vw;
+        min-width: 20vw;
         max-width: 23vw;
         height: auto;
         margin: auto;
@@ -316,6 +317,7 @@ body{
         border-radius: .5rem;
         min-width: 80vw;
         width: auto;
+        bottom: 15vh;
         max-width: 90vw;
         overflow-x: scroll;
         overflow-y: hidden;
@@ -423,7 +425,7 @@ body{
     .day-forecast-container {
         position: relative;
         z-index: -1;
-        top: 38vh;
+        top: 48vh;
         width: 90vw;
         height: 55vh;
         overflow-y: scroll;
@@ -447,8 +449,7 @@ body{
         width: 35%;
         height: auto;
         max-height: 12vh;
-        margin-top: -10px !important;
-    
+        margin-top: -20px !important;
         float:left; 
     }
     
