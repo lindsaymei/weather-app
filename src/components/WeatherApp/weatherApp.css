@@ -44,9 +44,9 @@ body{
     }
 
     .searchIcon img{
-        width: 3vw;
+        width: auto;
         float: center;
-        height: auto;
+        height: 4vh;
         object-fit: contain;
     }
     .currWeather{
@@ -153,7 +153,7 @@ body{
         position: absolute;
         top: calc(100% + 5px);
         right: 0;
-        width: 400px; /* Adjust width as needed */
+        width: 300px; /* Adjust width as needed */
         
         
         
@@ -392,12 +392,13 @@ body{
         position: absolute;
         top: calc(100% + 5px);
         right: 0;
-        width: 400px; /* Adjust width as needed */
+        width: 300px; /* Adjust width as needed */
         
     }
     
     .autosuggest-container .react-autosuggest__suggestions-list {
         max-height: 300px; /* Adjust max height as needed */
+        
         
     }
     
@@ -626,13 +627,14 @@ body{
 .autosuggest-container .react-autosuggest__suggestions-container {
     position: absolute;
     top: calc(100% + 5px);
-    right: 0;
-    width: 400px; /* Adjust width as needed */
+    right: 38px;
+    width: 205px; /* Adjust width as needed */
     background-color: #fff;
     z-index: 999;
     border-radius: .5rem;
-
+    border: .5px solid #878787;
 }
+
 
 .autosuggest-container .react-autosuggest__suggestions-list {
     list-style: none;
