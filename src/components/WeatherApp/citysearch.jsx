@@ -48,7 +48,9 @@ const SearchRes = ({ onLocationSelect }) => {
     const inputProps = {
         placeholder: 'Search for a location...',
         value: query,
-        onChange: (event, { newValue }) => setQuery(newValue)
+        onChange: (event, { newValue }) => setQuery(newValue),
+        className: 'custom-input' 
+
     };
 
     const onSuggestionSelected = (event, { suggestion }) => {

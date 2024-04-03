@@ -14,19 +14,24 @@ body{
         -webkit-backdrop-filter: blur(8.9px);
     }
     
-    .searchBar{
+    .searchBar {
         border-radius: 2rem;
-        float:right; 
+        width: 3vw;
+        height: 3vh;
+        float: right;
         white-space: nowrap;
         max-width: 30vw;
         flex-direction: row;
+        margin-right: 20px;
     }
+    
     .cityBar input {
         border-radius: 2rem;
         max-width: 30vw;
         width: calc(200px + 20vw); 
-        height: 3rem; 
-    }
+        height: 3vh;
+        width: 3vw;
+     }
     .todayIcon{
         max-width: 15vw;
         height: auto;
@@ -34,10 +39,12 @@ body{
     .searchBar ul{
         max-height:30vh;
         max-width: 20vw;
+    
     }
 
     .searchIcon img{
-        width: 5vw;
+        width: 3vw;
+        float: center;
         height: auto;
         object-fit: contain;
     }
@@ -58,7 +65,9 @@ body{
     }
     
     .hourly{
-        
+        display: flex;
+        justify-content: space-between; /* Add space between items */
+        overflow-x: auto; /* Add horizontal scroll for small screens */
         padding:1%;
         min-height: 15vh; height: auto;
         max-height: 16vh;
@@ -67,6 +76,9 @@ body{
         min-width: 60vw;
         width: auto;
         max-width: 90vw;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        -webkit-overflow-scrolling: touch; /* Add smooth scrolling for iOS */
+
         
         li{
             min-width: 5vw;
@@ -75,6 +87,8 @@ body{
             height: auto;
             min-height: 10vh;
             padding: .05%;
+            flex-shrink: 0;
+            margin-right: 10px;
             
             /* background: rgba(255, 255, 255, 0.33); */
     
@@ -87,6 +101,8 @@ body{
         height: calc(40px + 5vh);
         margin: auto;
         padding: none;
+        max-width: 70%; /* Make images responsive */
+        height: auto; /* Maintain aspect ratio */
     }
     .hourly h3{
         opacity: 80%;
@@ -125,6 +141,9 @@ body{
     .autosuggest-container {
         top: 20px; /* Adjust top position as needed */
         right: 20px; /* Adjust right position as needed */
+        height: 3vh;
+        
+        
     }
     .searchIcon {
         margin-left: 10px;
@@ -135,6 +154,8 @@ body{
         top: calc(100% + 5px);
         right: 0;
         width: 400px; /* Adjust width as needed */
+        
+        
         
     }
     
@@ -151,7 +172,6 @@ body{
  
     .forecastCont{
         max-width: 80vw;
-       
         min-height: 70vh;
         max-height: 90vh;
         height: fit-content;
@@ -219,12 +239,17 @@ body{
         white-space: nowrap;
         max-width: 30vw;
         flex-direction: row;
+        position: relative;
+        width: 4vw;
+        height: 5vh;
+        
     }
     .cityBar input {
         border-radius: 2rem;
         max-width: 30vw;
         width: calc(200px + 20vw); 
-        height: 3rem; 
+        height: 3vh; 
+        
     }
     .todayIcon{
         max-width: 15vw;
@@ -350,6 +375,11 @@ body{
     .autosuggest-container {
         top: 20px; /* Adjust top position as needed */
         right: 20px; /* Adjust right position as needed */
+        height: 3vh;
+        
+        
+        
+        
     }
     .searchIcon {
         margin-left: 10px;
@@ -432,11 +462,15 @@ body{
     float:right; 
     white-space: nowrap;
     flex-direction: row;
+    height: 3vh;
 }
 .cityBar input {
     border-radius: 2rem;
     background: #ffffff;
-    box-shadow:  20px 20px 60px #d9d9d9,
+    box-shadow:  20px 20px 60px #d9d9d9;
+    height: 3vh;
+    width: 3vw;
+
 
 }
 .todayIcon{
@@ -444,13 +478,16 @@ body{
     height: auto;
 }
 .searchBar ul{
-    height: auto;
+    height: 3vh;
     overflow-y: scroll;
     font-size: medium;
 }
 .cityBar{
     float:right;
     flex-direction: row;
+    height: 3vh;
+    width: 3vw;
+    
 }
 .searchIcon img{
     object-fit: contain;
@@ -553,10 +590,12 @@ body{
 
 
 .autosuggest-container {
-    position: absolute;
-    top: 20px; /* Adjust top position as needed */
-    right: 20px; /* Adjust right position as needed */
+    top: 30px; /* Adjust top position as needed */
+    right: 100px; /* Adjust right position as needed */
     display: flex;
+    height: 3vh;
+    position: absolute;
+    
 }
 
 .searchIcon {
@@ -569,8 +608,8 @@ body{
     right: 0;
     width: 400px; /* Adjust width as needed */
     background-color: #fff;
-    border: 1px solid #ccc;
-    z-index: 1;
+    z-index: 999;
+
 }
 
 .autosuggest-container .react-autosuggest__suggestions-list {
@@ -646,4 +685,35 @@ body{
 
 .day-forecast p {
     margin-top: 0px;
+}
+
+
+/* recent locations container */
+.recent-locations-container {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin-top: 20px;
+}
+
+.recent-location-button {
+    margin: 0 5px;
+    padding: 10px;
+}
+
+
+.container {
+    margin-top: 100px;
+}
+
+.forecastCont {
+    margin-top: 50px; 
+}
+
+
+.custom-input {
+    width: 200px; 
+    height: 3vh;
+    font-size: 16px; 
+    
 }

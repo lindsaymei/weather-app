@@ -27,7 +27,7 @@ function Weather({ weatherData, units }) {
 
     for (let i = 0; i < 8; i++) {
         const forecastedHour = (currentHour + i) % 24;
-        next6Hours.unshift(weatherData.days[0].hours[forecastedHour]); // Unshift to add at the beginning
+        next6Hours.push(forecastedHour);
     }
 
     return (
@@ -37,39 +37,41 @@ function Weather({ weatherData, units }) {
                     <h1>{today.toLocaleDateString('en-US', { weekday: 'long' })}</h1>
                     <h2>{today.toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit' })}</h2>
                     {FindIcon(weatherData.days[0].icon)}
-                      <div className='conds'>
-                          <h2>{weatherData.resolvedAddress.split(',')[0] + weatherData.resolvedAddress.split(',')[1]}</h2>
-                          <p>{convertTemp(weatherData.currentConditions.temp)}{units === 'imperial' ? '°F' : '°C'}</p>
-                          <p className='maxmin'>{convertTemp(weatherData.days[0].tempmax)}/{convertTemp(weatherData.days[0].tempmin)}{units === 'imperial' ? '°F' : '°C'}</p>
-                          <p className='feelsLike'>Feels like {convertTemp(weatherData.days[0].feelslike)}{units === 'imperial' ? '°F' : '°C'}</p>
-                          <p>{weatherData.days[0].description}</p>
-                      </div>
-                </div>
-                
-                <div className = 'forecastCont'>
-                <ul className='hourly'>
-                    {next6Hours.map((hour, index) => (
-                        <div key={index}>
-                            <li key={index} className='hourPeak'>
-                                <h3>{((currentHour + 5 - index) % 12 || 12) + (currentHour + 5 - index < 12 ? ' AM' : ' PM')}</h3>
-
-                                {FindIcon(hour.icon)}
-                                <p>{convertTemp(hour.temp)}{units === 'imperial' ? '°F' : '°C'}</p>
-                            </li>
-                        </div>
-                    ))}
-                </ul>
-                <div className="forecast">
-                    <div className="day-forecast-container">
-                        {nextDaysData.map((day, index) => (
-                            <div key={index} className="day-forecast">
-                                <h3>{days[(today.getDay() + index + 1) % 7]}</h3>
-                                {FindIcon(day.icon)}
-                                <p>{convertTemp(day.tempmax)}/{convertTemp(day.tempmin)}{units === 'imperial' ? '°F' : '°C'}</p>
-                            </div>
-                        ))}
+                    <div className='conds'>
+                        <h2>{weatherData.resolvedAddress.split(',')[0] + weatherData.resolvedAddress.split(',')[1]}</h2>
+                        <p>{convertTemp(weatherData.currentConditions.temp)}{units === 'imperial' ? '°F' : '°C'}</p>
+                        <p className='maxmin'>{convertTemp(weatherData.days[0].tempmax)}/{convertTemp(weatherData.days[0].tempmin)}{units === 'imperial' ? '°F' : '°C'}</p>
+                        <p className='feelsLike'>Feels like {convertTemp(weatherData.days[0].feelslike)}{units === 'imperial' ? '°F' : '°C'}</p>
+                        <p>{weatherData.days[0].description}</p>
                     </div>
                 </div>
+                
+                <div className='forecastCont'>
+                    <ul className='hourly'>
+                        {next6Hours.map((hour, index) => (
+                            <div key={index}>
+                                <li key={index} className='hourPeak'>
+                                    <h3>{(hour % 12 || 12) + (hour < 12 ? ' AM' : ' PM')}</h3>
+                                    {FindIcon(weatherData.days[0].hours[hour].icon)}
+                                    <p>{convertTemp(weatherData.days[0].hours[hour].temp)}{units === 'imperial' ? '°F' : '°C'}</p>
+                                    {weatherData.days[0].hours[hour].predictedTemp && (
+                                        <p>Predicted: {convertTemp(weatherData.days[0].hours[hour].predictedTemp)}{units === 'imperial' ? '°F' : '°C'}</p>
+                                    )}
+                                </li>
+                            </div>
+                        ))}
+                    </ul>
+                    <div className="forecast">
+                        <div className="day-forecast-container">
+                            {nextDaysData.map((day, index) => (
+                                <div key={index} className="day-forecast">
+                                    <h3>{days[(today.getDay() + index + 1) % 7]}</h3>
+                                    {FindIcon(day.icon)}
+                                    <p>{convertTemp(day.tempmax)}/{convertTemp(day.tempmin)}{units === 'imperial' ? '°F' : '°C'}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
                 
             </div>
@@ -78,6 +80,7 @@ function Weather({ weatherData, units }) {
 }
 
 export default Weather;
+
 
 // Helper function to get weather icon based on day or night
 //use FindIcon(x.icon)}
