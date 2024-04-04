@@ -4,11 +4,9 @@ import Weather from './components/WeatherApp/weather';
 import SearchRes from './components/WeatherApp/citysearch';
 import UnitToggleButton from './components/WeatherApp/UnitToggleButton'; // Importing the UnitToggleButton component
 import temp_search_icon from "./components/assets/search_red.jpg";
-import {config}  from './config.js';
+
 function App() {
-    console.log(config.SECRET_1);
-    const open_api_key = config.SECRET_1;
-    const visualcrossing_api_key = config.SECRET_2;
+    const open_api_key = "927ff31c800fbd111a2e2e414aa55341";
 
     const [data, setData] = useState({});
     const [locationSet, setLocationSet] = useState(false);
@@ -30,7 +28,7 @@ function App() {
                         const countryName = geoData[0].country;
                         
                         // Fetch weather data based on city name
-                        const weatherResponse = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName},${countryName}?key=${visualcrossing_api_key}`);
+                        const weatherResponse = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName},${countryName}?key=A44A6BCTP8LE8ARZZSSZDFE5L`);
                         const weatherData = await weatherResponse.json();
                         console.log(weatherData);
                         setData(weatherData);
@@ -43,7 +41,7 @@ function App() {
                   console.log("Geolocation is not supported by this browser.");
 
                   // using a non-charlotte location for testing reasons
-                  const weatherResponse = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Raleigh,US?key=${visualcrossing_api_key}`);
+                  const weatherResponse = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Raleigh,US?key=A44A6BCTP8LE8ARZZSSZDFE5L`);
                   const weatherData = await weatherResponse.json();
                     
                   setData(weatherData);
@@ -59,7 +57,7 @@ function App() {
     const handleLocationSelect = async (selectedLocation) => {
         try {
             const { name, country } = selectedLocation;
-            const res = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${name},${country}?key=${visualcrossing_api_key}`);
+            const res = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${name},${country}?key=A44A6BCTP8LE8ARZZSSZDFE5L`);
             const weatherData = await res.json();
             setData(weatherData);
             setLocationSet(true);
