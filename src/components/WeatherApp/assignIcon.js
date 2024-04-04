@@ -1,20 +1,19 @@
-// assignIcon.js
-
 import React from 'react';
 import sun from '../assets/sun.png';
 import moon from '../assets/moon.png';
-import rain from '../assets/sun_rain.png';
-import snow from '../assets/sun_snow.png';
-import sunClouds from '../assets/sun_clouds.png';
-import moonClouds from '../assets/moon_clouds.png';
-import storm from '../assets/sun_storm.png';
-import wind from '../assets/sun_wind.png';
+import sun_rain from '../assets/sun_rain.png';
+import moon_rain from '../assets/moon_rain.png';
+import sun_snow from '../assets/sun_snow.png';
+import moon_snow from '../assets/moon_snow.png';
+import sun_clouds from '../assets/sun_clouds.png';
+import moon_clouds from '../assets/moon_clouds.png';
+import sun_storm from '../assets/sun_storm.png';
+import moon_storm from '../assets/moon_storm.png';
+import sun_wind from '../assets/sun_wind.png';
+import moon_wind from '../assets/moon_wind.png';
 
-// Import statements...
-
-export function FindIcon(weatherMain, currentHour) {
+export function FindIcon(weatherMain, isNight) {
     let icon;
-    const isNight = currentHour >= 20 || currentHour < 5; // Determine if it's night based on current hour
 
     switch(weatherMain) {
         case "clear-day":
@@ -24,26 +23,26 @@ export function FindIcon(weatherMain, currentHour) {
             icon = moon;
             break;
         case "rain":
-            icon = rain;
+            icon = isNight ? moon_rain : sun_rain;
             break;
         case "snow":
-            icon = snow;
+            icon = isNight ? moon_snow : sun_snow;
             break;
         case "thunder-showers-day":
         case "thunder-rain":
-            icon = storm;
+            icon = isNight ? moon_storm : sun_storm;
             break;
         case "fog":
         case "cloudy":
         case "partly-cloudy-day":
         case "partly-cloudy-night":
-            icon = isNight ? moonClouds : sunClouds;
+            icon = isNight ? moon_clouds : sun_clouds;
             break;
         case "wind":
-            icon = wind;
+            icon = isNight ? moon_wind : sun_wind;
             break;
         default:
-            icon = snow;
+            icon = sun; // Default to sun for unknown weather conditions during the day
             break;
     }
 

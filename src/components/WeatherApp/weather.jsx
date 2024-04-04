@@ -9,18 +9,11 @@ function Weather({ weatherData, units }) {
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const today = new Date();
     const currentHour = today.getHours(); // Get the current hour
-    console.log("Current Hour:", currentHour);
-    const tomorrow = new Date(today);
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const tomorrowName = days[tomorrow.getDay()];
-    const nextDaysData = weatherData.days.slice(1, 7);
 
     const isNight = (hour) => {
         const adjustedHour = (hour + 24) % 24; // Adjust hour to handle negative values
-        const isNight = adjustedHour >= 20 || adjustedHour < 5; // Check if it's night time (8 PM to 5 AM)
-        return isNight;
+        return adjustedHour >= 20 || adjustedHour < 5; // Check if it's night time (8 PM to 5 AM)
     };
-    
 
     const convertTemp = (temp) => {
         if (units === 'imperial') {
@@ -45,7 +38,7 @@ function Weather({ weatherData, units }) {
                 <div className='currWeather'>
                     <h1>{today.toLocaleDateString('en-US', { weekday: 'long' })}</h1>
                     <h2>{today.toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit' })}</h2>
-                    {FindIcon(weatherData.days[0].icon, isNight)} {/* Pass the isNight flag */}
+                    {FindIcon(weatherData.days[0].icon, isNight(currentHour))}
                     <div className='conds'>
                         <h2>{weatherData.resolvedAddress.split(',')[0] + weatherData.resolvedAddress.split(',')[1]}</h2>
                         <p>{convertTemp(weatherData.currentConditions.temp)}{units === 'imperial' ? '°F' : '°C'}</p>
@@ -61,7 +54,7 @@ function Weather({ weatherData, units }) {
                             <div key={index}>
                                 <li key={index} className='hourPeak'>
                                     <h3>{(hour % 12 || 12) + (hour < 12 ? ' AM' : ' PM')}</h3>
-                                    {FindIcon(weatherData.days[0].hours[hour].icon, hour)} {/* Pass the current hour */}
+                                    {FindIcon(weatherData.days[0].hours[hour].icon, isNight(hour))}
                                     <p>{convertTemp(weatherData.days[0].hours[hour].temp)}{units === 'imperial' ? '°F' : '°C'}</p>
                                     {weatherData.days[0].hours[hour].predictedTemp && (
                                         <p>Predicted: {convertTemp(weatherData.days[0].hours[hour].predictedTemp)}{units === 'imperial' ? '°F' : '°C'}</p>
@@ -70,16 +63,16 @@ function Weather({ weatherData, units }) {
                             </div>
                         ))}
                     </ul>
-                <div className="forecast">
-                    <div className="day-forecast-container">
-                        {nextDaysData.map((day, index) => (
-                        <div key={index} className="day-forecast">
-                            <h3>{days[(today.getDay() + index + 1) % 7]}</h3>
-                            {FindIcon(day.icon)} {/* Always pass sun icon for the next few days */}
-                            <p>{convertTemp(day.tempmax)}/{convertTemp(day.tempmin)}{units === 'imperial' ? '°F' : '°C'}</p>
+                    <div className="forecast">
+                        <div className="day-forecast-container">
+                            {weatherData.days.slice(1, 7).map((day, index) => (
+                                <div key={index} className="day-forecast">
+                                    <h3>{days[(today.getDay() + index + 1) % 7]}</h3>
+                                    {FindIcon(day.icon, false)}
+                                    <p>{convertTemp(day.tempmax)}/{convertTemp(day.tempmin)}{units === 'imperial' ? '°F' : '°C'}</p>
+                                </div>
+                            ))}
                         </div>
-                    ))}
-                    </div>
                     </div>
                 </div>
             </div>
