@@ -46,7 +46,7 @@ const SearchRes = ({ onLocationSelect }) => {
     );
 
     const inputProps = {
-        placeholder: 'Search for a location...',
+        placeholder: 'Search for a location ⌕',
         value: query,
         onChange: (event, { newValue }) => setQuery(newValue),
         className: 'custom-input' 
@@ -70,11 +70,11 @@ const SearchRes = ({ onLocationSelect }) => {
                 inputProps={inputProps}
                 onSuggestionSelected={onSuggestionSelected}
             />
-            <div className='searchIcon'>
+            {/* <div className='searchIcon'>
 
 
                 <img src={temp_search_icon} alt='search icon'></img>
-            </div>
+            </div> */}
         </div>
     );
 };

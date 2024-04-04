@@ -9,10 +9,10 @@ body{
 /* tablet/ web sizing*/
 @media only screen and (min-width: 600px) {
     .hourly, .day-forecast{
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.25);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(8.9px);
-        -webkit-backdrop-filter: blur(8.9px);
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
     }
     
     .searchBar {
@@ -231,8 +231,8 @@ body{
     background: rgba(255, 255, 255, 0.22);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    -webkit-backdrop-filter: blur(10.3px);
-    backdrop-filter: blur(10.3px);
+    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(25px);
 
     border: 1px solid rgba(255, 255, 255, 0.1);
 
@@ -271,12 +271,12 @@ body{
     }
     .currWeather{
         flex-direction: row;
-        font-size: small !important;
+        font-size: calc(1vw + 5px) !important;
         position: relative !important;
         top: -55px !important;
-        margin-top: 3vh !important;
+        margin-top: 12vh !important;
         width: 85vw;
-        height:  30vh;
+        height:  22vh;
         margin: auto;
         padding: 5%;
         border-radius: 1rem;
@@ -301,21 +301,30 @@ body{
         flex-direction: column;
         margin: auto;
         text-align: center;
-        font-size: small ;
+        font-size: calc(1vw + 5px + .5vh) !important;
         top: 1vh !important;
         left:40vw;
         text-align: left !important;
+        bottom: 1vh !important;
+        p{
+            max-height: 1.1vh ;
+            max-width: 39vw;
+            margin-top: -1%;
+        }
     }
   
     .hourly{
         position: absolute;
-        top:22vh; /* height of currWeather + 2vh */
+        top:8vh; /* height of currWeather + 2vh */
         padding:1%;
+        padding-left: 2.5vw !important; /*correcting placement isses
+         caused by float right
+         float right  currently is needed to display the list properly */
         min-height: 5vh; 
         height: auto;
         max-height: 12vh;
         border-radius: .5rem;
-        min-width: 80vw;
+        min-width: 82.5vw;
         width: auto;
         bottom: 15vh;
         max-width: 90vw;
@@ -323,12 +332,15 @@ body{
         overflow-y: hidden;
         li{
 
-            min-width: 12vw;
+            min-width: 15vw;
             width: auto;
-            max-width: 12.5vw;
+            max-width: 15.5vw;
             height: auto;
             min-height: 10vh;
             padding: .05%;
+            margin:auto; 
+            float:left;
+            
             
             /* background: rgba(255, 255, 255, 0.33); */
     
@@ -415,7 +427,7 @@ body{
         min-height: 80vh;
         max-height: 95vh;
         height: auto;
-        top: 5%;
+        top: 2.5%;
         left:5vw !important;
        
     }
@@ -425,10 +437,12 @@ body{
     .day-forecast-container {
         position: relative;
         z-index: -1;
-        top: 48vh;
-        width: 90vw;
-        height: 55vh;
+        top: 39vh;
+        min-width: 85vw;
+        height: 51vh;
         overflow-y: scroll;
+        overflow-x: hidden;
+
         bottom: -1px;
     
     }
@@ -512,10 +526,10 @@ body{
     position: fixed;
     top: 0;
 /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.33);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(13.3px);
-    -webkit-backdrop-filter: blur(13.3px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.39);
     margin: auto;
     
@@ -636,7 +650,6 @@ body{
     background-color: #fff;
     z-index: 999;
     border-radius: .5rem;
-    border: .5px solid #878787;
 }
 
 
